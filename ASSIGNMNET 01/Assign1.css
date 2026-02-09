@@ -1,63 +1,102 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    padding: 20px;
+    background: linear-gradient(135deg, #8db4ff, #8fd3f4);
+    margin: 0;
+    padding: 30px;
 }
 
-h1 {
+.title {
     text-align: center;
+    color: white;
+    margin-bottom: 30px;
 }
 
-h3{
-  text-align: center;
-}
-.form-container {
-    background: white;
-    padding: 15px;
-    border-radius: 6px;
-    width: 350px;
-    margin: auto;
-}
-
-.form-container input,
-.form-container textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-}
-
-#eventcategory{
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-}
-
-button {
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-#eventContainer {
+.dashboard {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 25px;
     justify-content: center;
 }
 
-.event-card {
+.card {
     background: white;
-    padding: 15px;
-    width: 250px;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card.large {
+    width: 500px;
+}
+
+h2 {
+    color: #162ade;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
     border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
 }
 
-.event-card.highlight {
-    background: #e0f7fa;
+textarea {
+    resize: none;
+    height: 70px;
 }
 
-.event-card button {
-    margin-right: 5px;
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #6a6ff2, #7b4ca0);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
+button:hover {
+    opacity: 0.9;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.actions button {
+    width: 50%;
+}
+
+.event {
+    background: #f5f7ff;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.event h4 {
+    margin: 0;
+    color: #4a55d1;
+}
+
+.event p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.empty {
+    color: gray;
+    text-align: center;
+}
