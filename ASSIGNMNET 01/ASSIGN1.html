@@ -3,34 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Smart Event Dashboard</title>
-    <link rel="stylesheet" href="Assign1.css">
+    <link rel="stylesheet" href="2.css">
 </head>
 <body>
 
-<h1>🎯 Smart Event Dashboard</h1>
+<h1 class="title">🎯 Smart Event Dashboard</h1>
 
-<h3>Add New Event</h3>
+<div class="dashboard">
 
-<!-- Event Creation Form -->
-<div class="form-container">
-    <label for="eventName">Event Title:</label>
-    <input type="text" id="eventName" placeholder="Event Name">
-    <label for="eventDate">Event Date:</label>
-    <input type="date" id="eventDate">
-    <label for="eventcategory">Category:</label>
-    <select  id="eventcategory">
-        <option value="conference">Conference</option>
-        <option value="social">Social</option>
-        <option value="meeting">Meeting</option>
-        <option value="debate">Debate</option>
-    </select>
-    <textarea id="eventDesc" placeholder="Event Description"></textarea>
-    <button id="addEventBtn">Add Event</button>
+    <!-- Add Event Card -->
+    <div class="card">
+        <h2>Add New Event</h2>
+
+        <label for="title">Event Title:</label>
+        <input type="text" id="title">
+
+        <label for="date">Event Date:</label>
+        <input type="date" id="date">
+
+        <label for="category">Category:</label>
+        <select id="category">
+            <option>Conference</option>
+            <option>Workshop</option>
+            <option>Seminar</option>
+            <option>Fest</option>
+        </select>
+
+        <label for="description">Description:</label>
+        <textarea id="description"></textarea>
+
+        <button onclick="addEvent()">Add Event</button>
+    </div>
+
+    <!-- Events List Card -->
+    <div class="card large">
+        <h2>My Events</h2>
+
+        <div class="actions">
+            <button onclick="clearEvents()">Clear All Events</button>
+            <button onclick="addSampleEvents()">Add Sample Events</button>
+        </div>
+
+        <div id="eventList" class="event-list">
+            <p class="empty">No events yet. Add your first event!</p>
+        </div>
+    </div>
+
 </div>
 
-<!-- Event Cards Container -->
-<div id="eventContainer"></div>
-
-<script src="Assign1.js"></script>
+<script src="2.js"></script>
 </body>
 </html>
