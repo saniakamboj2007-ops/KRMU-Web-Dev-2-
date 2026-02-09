@@ -1,56 +1,61 @@
-const addEventBtn = document.getElementById("addEventBtn");
-const eventContainer = document.getElementById("eventContainer");
+const eventList = document.getElementById("eventList");
 
-addEventBtn.addEventListener("click", () => {
-    const name = document.getElementById("eventName").value;
-    const date = document.getElementById("eventDate").value;
-    const desc = document.getElementById("eventDesc").value;
-    const category = document.getElementById("eventcategory").value;
+function addEvent() {
+    const title = document.getElementById("title").value;
+    const date = document.getElementById("date").value;
+    const category = document.getElementById("category").value;
+    const description = document.getElementById("description").value;
 
-    if (name === "" || date === "" || desc === "" || category === "") {
-        alert("Please fill all fields");
+    if (!title || !date) {
+        alert("Please enter title and date");
         return;
     }
 
-    // Create Event Card
-    const card = document.createElement("div");
-    card.className = "event-card";
+    removeEmptyText();
 
-    card.innerHTML = `
-        <h3>${name}</h3>
-        <p><strong>Date:</strong> <span class="date">${date}</span></p>
-        <p class="desc">${desc}</p>
-        <p class = "eventcategory">${category} </p>
-        <button class="highlight-btn">Highlight</button>
-        <button class="delete-btn">Delete</button>
+    const div = document.createElement("div");
+    div.className = "event";
+
+    div.innerHTML = `
+        <h4>${title}</h4>
+        <p><b>Date:</b> ${date}</p>
+        <p><b>Category:</b> ${category}</p>
+        <p>${description}</p>
     `;
 
-    eventContainer.appendChild(card);
+    eventList.appendChild(div);
 
-    // Clear form
-    document.getElementById("eventName").value = "";
-    document.getElementById("eventDate").value = "";
-    document.getElementById("eventDesc").value = "";
-    document.getElementById("eventcategory").value = "";
-});
+    document.getElementById("title").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("description").value = "";
+}
 
-/* Event Delegation */
-eventContainer.addEventListener("click", (e) => {
-    const card = e.target.closest(".event-card");
+function clearEvents() {
+    eventList.innerHTML = `<p class="empty">No events yet. Add your first event!</p>`;
+}
 
-    if (e.target.classList.contains("delete-btn")) {
-        card.remove();
-    }
+function addSampleEvents() {
+    clearEvents();
+    const samples = [
+        ["Tech Meeting", "2026-02-10", "Meeting", "AI & Web Technologies"],
+        ["Hackathon", "2026-04-01", "Workshop", "24-hour coding challenge"],
+        ["College Fest", "2026-05-20", "Fest", "Cultural & technical fest"]
+    ];
 
-    if (e.target.classList.contains("highlight-btn")) {
-        card.classList.toggle("highlight");
-    }
-});
+    samples.forEach(e => {
+        const div = document.createElement("div");
+        div.className = "event";
+        div.innerHTML = `
+            <h4>${e[0]}</h4>
+            <p><b>Date:</b> ${e[1]}</p>
+            <p><b>Category:</b> ${e[2]}</p>
+            <p>${e[3]}</p>
+        `;
+        eventList.appendChild(div);
+    });
+}
 
-/* Text manipulation demo */
-console.log(
-    "innerText:", addEventBtn.innerText,
-    "textContent:", addEventBtn.textContent,
-    "innerHTML:", addEventBtn.innerHTML
-);
-
+function removeEmptyText() {
+    const empty = document.querySelector(".empty");
+    if (empty) empty.remove();
+}
